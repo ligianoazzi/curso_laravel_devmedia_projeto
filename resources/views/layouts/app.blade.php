@@ -43,7 +43,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <!-- <li> <a href="{{ url('/home') }}">Cliente</a> </li> -->
+                        <li> <a href="{{ route('cliente.index') }}">Cliente</a> </li>
+                        <!-- cliente.index é o alias, se mudar o nome do controller ou nome da rota não tem problema </li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
