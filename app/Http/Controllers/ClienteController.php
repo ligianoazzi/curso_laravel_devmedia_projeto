@@ -13,7 +13,14 @@ class ClienteController extends Controller
 
     public function index()
     {
-    	$clientes = \App\Cliente::all();
+    	//$clientes = \App\Cliente::all();
+
+		$clientes = \App\Cliente::paginate(5);
+		// vai trazer 15 registros e gerar paginação
+
+
+
+
     	//dd($clientes);
     	// dd(); é tipo o var_dump(); do php
 
