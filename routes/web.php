@@ -33,3 +33,5 @@ Auth::routes();
  // se o parametro não fosse obrigatório, seria assim -> {id?}
 
   Route::put('/cliente/atualizar/{id}',    ['uses'=>'ClienteController@atualizar'   ,'as'=>'cliente.atualizar']);
+
+  Route::get('/cliente/deletar/{id}',    ['uses'=>'ClienteController@deletar'   ,'as'=>'cliente.deletar']);

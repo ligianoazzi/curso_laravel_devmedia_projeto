@@ -11,6 +11,6 @@ class Telefone extends Model
     	return $this->belongsTo('App\Cliente');
     	// criando relacionamento com a model de cliente
     	// returna o único cliente a qual este telefone pertence
-    	// belongsTo ... pertence a 
+    	// belongsTo ... pertence a
     }
 }

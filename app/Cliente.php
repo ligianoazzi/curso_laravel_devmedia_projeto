@@ -24,4 +24,16 @@ class Cliente extends Model
 		// telefones() aqui, é o mesmo telefones() da linha 9
 		// manda salva na tabela de telefones o que ele recebe via addTelefone()
 	}
+
+	public function deletarTelefones()
+	{
+		foreach ($this->telefones as $tel) {
+			$tel->delete();
+		}
+
+		return true;
+		// $this->telefones faz rerefência ao método telefones() logo acima... que traz todos os telefones do cliente em questão
+		// esta função vai percorrer todos os telefones do cliente em questão, deletando-os
+
+	}
 }

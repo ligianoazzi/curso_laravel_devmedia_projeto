@@ -77,4 +77,28 @@ class ClienteController extends Controller
 
         // em compact('cliente') está mandando os dados de $cliente
     }
+
+    public function deletar($id)
+    {
+        $cliente = \App\Cliente::find($id);
+        // buscando o objeto cliente
+
+        if(!$cliente->deletarTelefones()){
+            \Session::flash('flash_message',[
+              'msg'=>"Registro não pode ser deletado!",
+              'class'=>"alert-danger"
+            ]);
+            return redirect()->route('cliente.index');
+        }// deletando os telefones deste cliente, senão a integridade referencial não deixa
+
+        $cliente->delete();
+        // deletando o cliente
+
+        \Session::flash('flash_message',[
+          'msg'=>"Cliente deletado com sucesso!",
+          'class'=>"alert-success"
+        ]);
+
+        return redirect()->route('cliente.index');
+    }
 }

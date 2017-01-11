@@ -38,7 +38,7 @@
                         <td>{{ $cliente->endereco }}</td>
                         <td>
                             <a class="btn btn-default" href="{{route('cliente.editar', $cliente->id)}}">Editar</a>
-                            <a class="btn btn-danger"  href="#">Deletar</a>
+                            <a class="btn btn-danger"  href="javascript:(confirm('Deletar este cliente?') ? window.location.href='{{route('cliente.deletar', $cliente->id)}}' : console.log('desistiu de deletar cliente '+{{$cliente->id}}))">Deletar</a>
                         </td>
                       </tr>
 
