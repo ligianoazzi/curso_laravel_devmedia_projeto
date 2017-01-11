@@ -5,12 +5,19 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Lista de Clientes</div>
+
+                <ol class="breadcrumb panel-heading">
+                  @if (!Auth::guest()) <!-- se não estiver logado, exibe -->
+                    <li class="active">Cliente</li>
+                  @endif
+                </ol>
+
+
                 <div class="panel-body">
 
-                  <a class="btn btn-info"  href="#">Adicionar</a>
+                  <a class="btn btn-info"  href="{{ route('cliente.adicionar') }}">Adicionar</a>
 
-                <table class="table table-bordered">
+                  <table class="table table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -35,11 +42,18 @@
                         </td>
                       </tr>
 
+                      <!-- qual a financeira que você trabalha?
+                          Estes dias passei a ficha pra uma moto e passou na portocred e na santander financiamentos, visto que não tenho restrição nem em SPC nem Serasa
+
+
+
+                    -->
+
                       @endforeach
 
                     </tbody>
 
-                </table>
+                  </table>
 
 
 

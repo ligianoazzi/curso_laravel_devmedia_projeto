@@ -22,5 +22,8 @@ Auth::routes();
 
   // Route::get('/cliente', 'ClienteController@index'); forma sem uso de alias
   Route::get('/cliente', ['uses'=>'ClienteController@index','as'=>'cliente.index']);
-  // nos links 
+  // nos links
 
+  Route::get('/cliente/adicionar', ['uses'=>'ClienteController@adicionar','as'=>'cliente.adicionar']);
+
+  Route::post('/cliente/salvar',   ['uses'=>'ClienteController@salvar'   ,'as'=>'cliente.salvar']);
