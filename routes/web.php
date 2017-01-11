@@ -27,3 +27,9 @@ Auth::routes();
   Route::get('/cliente/adicionar', ['uses'=>'ClienteController@adicionar','as'=>'cliente.adicionar']);
 
   Route::post('/cliente/salvar',   ['uses'=>'ClienteController@salvar'   ,'as'=>'cliente.salvar']);
+
+  Route::get('/cliente/editar/{id}',    ['uses'=>'ClienteController@editar'   ,'as'=>'cliente.editar']);
+  // rota para montar a tela de editar
+ // se o parametro não fosse obrigatório, seria assim -> {id?}
+
+  Route::put('/cliente/atualizar/{id}',    ['uses'=>'ClienteController@atualizar'   ,'as'=>'cliente.atualizar']);

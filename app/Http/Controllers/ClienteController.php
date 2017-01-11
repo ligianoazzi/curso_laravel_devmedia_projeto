@@ -46,5 +46,35 @@ class ClienteController extends Controller
       return redirect()->route('cliente.adicionar');
     }
 
+    public function editar($id)
+    {
+        $cliente = \App\Cliente::find($id);
+        // aqui já está jogando os dados do cliente na variável cliente (array)
 
+        if(!$cliente){// se não existir cliente com este id
+          \Session::flash('flash_message',[
+            'msg'=>"Cliente inexistente! Deseja cadastrar um novo cliente?",
+            'class'=>"alert-danger"
+          ]);
+          return redirect()->route('cliente.index');
+        }
+
+        return view('cliente.editar', compact('cliente'));
+        // em compact('cliente') está mandando os dados de $cliente
+    }
+
+    public function atualizar(Request $request, $id)
+    {
+        \App\Cliente::find($id)->update($request->all());
+        // aqui já está jogando os dados do cliente na variável cliente (array)
+
+          \Session::flash('flash_message',[
+            'msg'=>"Cliente atualizado com sucesso!",
+            'class'=>"alert-success"
+          ]);
+
+          return redirect()->route('cliente.index');
+
+        // em compact('cliente') está mandando os dados de $cliente
+    }
 }
