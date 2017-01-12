@@ -23,6 +23,13 @@ Auth::routes();
   // Route::get('/cliente', 'ClienteController@index'); forma sem uso de alias
   Route::get('/cliente', ['uses'=>'ClienteController@index','as'=>'cliente.index']);
   // nos links
+ //  /cliente (é o que aparece na url)
+ //  'uses'=>'ClienteController@index' (fazendo referencia ao controller de cliente)
+ //  'as'=>'cliente.index' (determinando um apelido para fazer referencia a esta rota no sistema, assim se mudar o controller, não precisa mudar nas chamadas)
+
+
+
+
 
   Route::get('/cliente/adicionar', ['uses'=>'ClienteController@adicionar','as'=>'cliente.adicionar']);
 
@@ -35,3 +42,5 @@ Auth::routes();
   Route::put('/cliente/atualizar/{id}',    ['uses'=>'ClienteController@atualizar'   ,'as'=>'cliente.atualizar']);
 
   Route::get('/cliente/deletar/{id}',    ['uses'=>'ClienteController@deletar'   ,'as'=>'cliente.deletar']);
+
+  Route::get('/cliente/detalhe/{id}',    ['uses'=>'ClienteController@detalhe', 'as'=>'cliente.detalhe']);

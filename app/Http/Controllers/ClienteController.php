@@ -31,10 +31,16 @@ class ClienteController extends Controller
         return view('cliente.adicionar');
     }
 
+    public function detalhe($id)
+    {
+        $cliente = \App\Cliente::find($id);
+        return view('cliente.detalhe', compact('cliente'));
+    }
+
     /* o forma faz uma requisição post e a funcao, no Laravel, trata a requisicao usanco uma classe chamada request
       a variavel $meu_request recebe esses dados (ja tratados, pelo que eu entendi)
     */
-    public function salvar(Request $meu_request)// aqui dentro
+    public function salvar(Request $meu_request)// request pq puxou dados de um form
     {
       \App\Cliente::create($meu_request->all());
 

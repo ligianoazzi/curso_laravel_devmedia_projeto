@@ -8,14 +8,16 @@
 
                 <ol class="breadcrumb panel-heading">
                   @if (!Auth::guest()) <!-- se não estiver logado, exibe -->
-                    <li class="active">Cliente</li>
+                    <li class="active">Clientes</li>
                   @endif
                 </ol>
 
 
                 <div class="panel-body">
 
-                  <a class="btn btn-info"  href="{{ route('cliente.adicionar') }}">Adicionar</a>
+                  <p>
+                    <a class="btn btn-info"  href="{{ route('cliente.adicionar') }}">Adicionar</a>
+                  </p>
 
                   <table class="table table-bordered">
                     <thead>
@@ -37,6 +39,7 @@
                         <td>{{ $cliente->email }}</td>
                         <td>{{ $cliente->endereco }}</td>
                         <td>
+                            <a class="btn btn-default" href="{{route('cliente.detalhe', $cliente->id)}}">Detalhe</a>
                             <a class="btn btn-default" href="{{route('cliente.editar', $cliente->id)}}">Editar</a>
                             <a class="btn btn-danger"  href="javascript:(confirm('Deletar este cliente?') ? window.location.href='{{route('cliente.deletar', $cliente->id)}}' : console.log('desistiu de deletar cliente '+{{$cliente->id}}))">Deletar</a>
                         </td>
@@ -54,6 +57,7 @@
                     </tbody>
 
                   </table>
+
 
 
 
