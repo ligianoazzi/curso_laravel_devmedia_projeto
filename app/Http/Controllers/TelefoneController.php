@@ -37,7 +37,59 @@ class TelefoneController extends Controller
 
       return redirect()->route('cliente.detalhe', $id);
 
-
-
     }
+
+    public function editar($id) // monta a tela do form
+    {
+        $telefone = \App\Telefone::find($id);
+
+        if(!$telefone){// se não existir cliente com este id
+          \Session::flash('flash_message',[
+            'msg'=>"Não existe este telefone cadastrado!",
+            'class'=>"alert-danger"
+          ]);
+          return redirect()->route('cliente.detalhe', $telefone->cliente->id);
+          // $telefone tem o objeto da model telefone de acordo com o id recebido como parametro
+          // ->cliente vem da Model de Telefone, é um método, e ele pega o campo id
+        }
+
+        return view('telefone.editar', compact('telefone'));
+        // em compact('cliente') está mandando os dados de $cliente
+    }
+
+
+    public function atualizar(Request $request, $id)
+    {
+        $telefone = \App\Telefone::find($id);
+        $telefone->update($request->all());
+        // aqui já está jogando os dados do cliente na variável cliente (array)
+        // não esquecer de colocar o fillable na model telefone
+
+          \Session::flash('flash_message',[
+            'msg'=>"Telefone atualizado com sucesso!",
+            'class'=>"alert-success"
+          ]);
+
+          return redirect()->route('cliente.detalhe', $telefone->cliente->id);
+
+        // em compact('cliente') está mandando os dados de $cliente
+    }
+
+
+    public function deletar($id)
+    {
+        $telefone = \App\Telefone::find($id);
+        // buscando o objeto cliente
+
+        $telefone->delete();
+        // deletando o cliente
+
+        \Session::flash('flash_message',[
+          'msg'=>"Telefone deletado com sucesso!",
+          'class'=>"alert-success"
+        ]);
+
+        return redirect()->route('cliente.detalhe', $telefone->cliente->id);
+    }
+
 }

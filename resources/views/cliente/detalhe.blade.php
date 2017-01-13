@@ -41,8 +41,8 @@
                         <td>{{ $telefone->titulo }}</td>
                         <td>{{ $telefone->telefone }}</td>
                         <td>
-                            <a class="btn btn-default" href="#">Editar</a>
-                            <a class="btn btn-danger"  href="javascript:(confirm('Deletar este cliente?') ? window.location.href='#' : console.log('desistiu de deletar cliente '+{{$cliente->id}}))">Deletar</a>
+                            <a class="btn btn-default" href="{{ route('telefone.editar', $telefone->id) }}">Editar</a>
+                            <a class="btn btn-danger"  href="javascript:(confirm('Deletar este Telefone?') ? window.location.href='{{ route('telefone.deletar', $telefone->id) }}' : console.log('desistiu de deletar cliente '+{{$cliente->id}}))">Deletar</a>
                         </td>
                       </tr>
                       @endforeach
