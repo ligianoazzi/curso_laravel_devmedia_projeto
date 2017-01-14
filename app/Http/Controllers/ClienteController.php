@@ -40,7 +40,11 @@ class ClienteController extends Controller
     /* o forma faz uma requisição post e a funcao, no Laravel, trata a requisicao usanco uma classe chamada request
       a variavel $meu_request recebe esses dados (ja tratados, pelo que eu entendi)
     */
-    public function salvar(Request $meu_request)// request pq puxou dados de um form
+
+//    public function salvar(Request $meu_request)// request pq puxou dados de um form
+// na aula 29 comentou a linha acima e inseriu a debaixo, para implementar as regras de validação
+
+    public function salvar(\App\Http\Requests\ClienteRequest $meu_request)
     {
       \App\Cliente::create($meu_request->all());
 

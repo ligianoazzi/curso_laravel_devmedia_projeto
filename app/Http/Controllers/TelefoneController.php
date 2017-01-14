@@ -18,7 +18,7 @@ class TelefoneController extends Controller
         // montando a tela com o form para add telefone para o cliente recebido como parametro.
     }
 
-    public function salvar(Request $request, $id)
+    public function salvar(\App\Http\Requests\TelefoneRequest $request, $id)
     {
       $telefone = new \App\Telefone; // instanciando objeto telefone ... da model Telefone
       $telefone->titulo = $request->input('titulo');
