@@ -12,12 +12,19 @@
 */
 
 Route::get('/', function () {
+
+    
+
+
     return view('welcome');
 });
+
 
 Auth::routes();
 // todos as rotas que estiverem daqui para baixo precisarão estar çlogados para passar
 // se não estiver logado, em app\Http\Middleware\RedirectIfAuthenticated.php linha 21, está a configuração de redirecionamento
+
+Route::get('/home', ['uses'=>'HomeController@index','as'=>'home.index']);
 
 
   // Route::get('/cliente', 'ClienteController@index'); forma sem uso de alias
